@@ -5,11 +5,19 @@ Name;       Planet;   Distance to planet;   Time to orbit;   Diameter;
 Moon:       Earth;    3844456km;            27days;          3476km; 
 
 Phobos:     Mars;     9387km;               0.308days;       27km;
-  
+Deimos:     Mars;     23481km;              1.26days;        15km;
+
 Ganymede:   Jupiter;  1070000km;            7.2 days;        5262km;
+Callisto:   Jupiter;  1880000km;            16.7days;        4831km;   
+Io:         Jupiter;  421801km;             1.77days;        3643km;
 
 Titan:      Saturn;   1240000km;            16days;          5150km;
+Rhea:       Saturn;   535491km;             4.5days;         1528km;
+Iapetus:    Saturn;   3620000km;            79days;          1492km;
 
-Titania;    Uranus;   437958km;             8.7days;         1578km;
+Titania:    Uranus;   437958km;             8.7days;         1578km;
+Oberon:     Uranus;   585717km;             13.5days;        1523km;
+Umbriel:    Uranus;   267015km;             4.1days;         1169km;
 
 Triton;     Neptun;   355771km;             5.7days;         2707km;
+Proteus:    Neptun;   117982km;             1.12days;        428km;
