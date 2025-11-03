@@ -3,12 +3,18 @@ namespace SolarSystem {
     export class Vector2 {
         public x!: number;
         public y!: number;
+        public w: number = 1;
 
 
 
 
-        public constructor(_x: number, _y: number) {
-            this.set(_x, _y);
+        public constructor(_x: number, _y: number, _w?: number) {
+            if(_w){
+                this.set(_w, _y,_w)
+            }
+            else{
+                this.set(_x, _y);
+            }
         }
 
 
@@ -36,9 +42,15 @@ namespace SolarSystem {
             const yNew: number = this.y * Math.cos(angleRad) + this.x * Math.sin(angleRad);
             this.set(xNew, yNew);
         }
-        public set(_x: number, _y: number): void {
+        public set(_x: number, _y: number, _w?: number): void {
             this.x = _x;
             this.y = _y;
+            if (_w) {
+                this.w = _w;
+            }
+            else {
+                this.w = this.w;
+            }
         }
         public normalise(): void {
             const length: number = this.length;
