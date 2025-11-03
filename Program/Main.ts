@@ -1,14 +1,13 @@
 namespace SolarSystem {
     window.addEventListener("load", handleLoad);
     export let crc2: CanvasRenderingContext2D;
-    const actors: Actor[] = [];
+    export const actors: Actor[] = [];
     let timescale: number;
     const clickedPos: Vector2 = new Vector2(0, 0);
     let infobox: Infobox;
     let clicked: boolean = false;
     let delaytimescale: number = 1;
-
-
+ 
 
     function handleLoad(_event: Event): void {
         let canvas: HTMLCanvasElement | null = document.getElementById("simulationcanvas") as HTMLCanvasElement;
@@ -26,8 +25,10 @@ namespace SolarSystem {
         let deltaTime = getDeltaTime();
         for (let actor of actors) {
             actor.process(delaytimescale);
-            if(clicked){
-                actor.isclicked(clickedPosq);
+            if (clicked) {
+                if (actor.isclicked(clickedPos)) {
+                    createInfoBox(actor.info, clickedPos);
+                }
             }
         }
     }
@@ -36,4 +37,5 @@ namespace SolarSystem {
         clickedPos.set(_event.clientX - crc2.canvas.offsetLeft, _event.clientY - crc2.canvas.offsetTop);
         clicked = true;
     }
+
 }
