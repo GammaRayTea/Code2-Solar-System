@@ -1,1 +1,20 @@
+SolarSystemData.
 
+
+Sun (Sol):  diameter 1,391,400 km; 
+
+Mercury: diameter: 4,880 km; distance to sun: 60.3M km; rotation speed: 10.8km/h; day length: 58 days; time to orbit the sun: 88 days; Moons: -;
+
+Venus: diameter: 12104 km; distance to sun: 108M km; rotation speed: 6.5km/h; day length: 243 days; time to orbit the sun: 255 dayd; Moons: -;
+
+Earth (Terra): diameter:  12756km; distance to sun: 150M km; rotation speed: 1574km/h; day length:  1days; time to orbit the sun:  365days; Moons: Moon (Luna);
+
+Mars: diameter:  6792km; distance to sun: 230M km; rotation speed: 866km/h; day length:  24.5days; time to orbit the sun:  688.2days; Moons: Phobos;
+
+Jupiter: diameter:  142984km; distance to sun: 780M km; rotation speed: 45583km/h; day length:  10/24days; time to orbit the sun:  4346.3835days; Moons:Ganymede;
+
+Saturn: diameter:  120536km; distance to sun: 1433.1M km; rotation speed: 36840km/h; day length:  10.5/24days; time to orbit the sun:  10592days; Moon: Titan;
+
+Uranus: diameter:  51118km; distance to sun: 2872M km; rotation speed: 14794km/h; day length:  17/24days; time to orbit the sun:  30680days; Moon:Titania;
+
+Neptun: diameter:  49528km; distance to sun: 4502M km; rotation speed: 9719km/h; day length:  16/24days; time to orbit the sun:  60265days; Moon: Triton;
