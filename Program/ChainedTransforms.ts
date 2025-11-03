@@ -1,4 +1,4 @@
-namespace ChainedTransforms {
+namespace SolarSystem {
   type Transform = { path: Path2D, angle: number, distance: number, transform?: DOMMatrix };
   window.addEventListener("load", hndLoad);
   document.addEventListener("click", hndClick);
