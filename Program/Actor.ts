@@ -23,7 +23,6 @@ namespace SolarSystem {
                 const localVector2: Vector2 = new Vector2(local.x,local.y);
 
 
-            
                 if () {
                     return true;
                 }
