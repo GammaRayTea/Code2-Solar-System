@@ -26,7 +26,7 @@ namespace SolarSystem {
             actor.process(delaytimescale);
             if (clickedActive) {
                 if (actor.isclicked(clickedPos)) {
-                    generrate(actor.info, clickedPos);
+                    Infobox.generate(actor.info, clickedPos);
                 }
             }
         }

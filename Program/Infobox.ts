@@ -7,7 +7,7 @@ namespace SolarSystem {
         public info?: Info;
         public position?: Vector2;
 
-        public generrate(_info: Info, _position: Vector2): void {
+        public static generate(_info: Info, _position: Vector2): void {
             const table = document.createElement("table");
             table.classList.add("info-popup");
 
