@@ -1,4 +1,4 @@
-namespace Asteroids {
+namespace SolarSystem {
 
     export class Vector2 {
         public x!: number;
@@ -15,8 +15,16 @@ namespace Asteroids {
                 this.set(_args[0].x, _args[0].y)
             }
         }
-        public static getDifference(_v0: Vector2, _v1: Vector2): Vector2 {
-            const vector: Vector2 = new Vector2(_v0.x - _v1.x, _v0.y - _v1.y);
+        public static getDifference(_v0: Vector2, _v1: Vector2): Vector2
+        public static getDifference(_v0: Vector2, _v1x: number, _v1y: number): Vector2
+        public static getDifference(..._args: any[]): Vector2 {
+            const vector: Vector2 = new Vector2(0, 0);
+            if (_args.length === 2) {
+                vector.set(_args[0].x - _args[1].x, _args[0].y - _args[1].y);
+            }
+            else if (_args.length === 3) {
+                vector.set(_args[0].x - _args[1], _args[0].y - _args[2]);
+            }
             return vector;
         }
         public static random(_minLength: number, _maxLength: number): Vector2 {
@@ -53,7 +61,7 @@ namespace Asteroids {
         public set(_vector: Vector2): void;
         public set(_x: number, _y: number): void;
         public set(..._args: any[]): void {
-            
+
             if (_args.length === 1) {
                 this.x = _args[0].x
                 this.y = _args[0].y
