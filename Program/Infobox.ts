@@ -1,6 +1,6 @@
 namespace SolarSystem {
-    export type Datapair = { key: string, value: string };
-    export interface Info { title?: string, infotext?: string, data?: Datapair[] };
+    export interface ShipInfo { name: string, destination: string, origin: string};
+    export interface CelestialBodyInfo { name: string, infotext: string, orbiRotation: number, axisRotation: number, size:number};
 
 
     export class Infobox {
