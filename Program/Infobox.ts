@@ -2,32 +2,35 @@ namespace SolarSystem {
     export type Datapair = { key: string, value: string };
     export interface Info { title?: string, infotext?: string, data?: Datapair[] };
 
+
     export class Infobox {
-        public info: Info;
-        public position: Vector2;
+        public info?: Info;
+        public position?: Vector2;
 
-        public constructor(_position: Vector2, _info: Info) {
-            this.position = _position;
-            this.info = _info;
-        }
-
-        public createInfoBox(_info: Info, _position: Vector2): void {
+        public generrate(_info: Info, _position: Vector2): void {
             const table = document.createElement("table");
             table.classList.add("info-popup");
 
             const header = document.createElement("tr");
             const headerCell = document.createElement("th");
             headerCell.colSpan = 2;
-            headerCell.textContent = _info.title;
+            if (_info.title) {
+                headerCell.textContent = _info.title;
+            }
+            else{
+                headerCell.textContent = "Unknown";
+            }
             header.appendChild(headerCell);
             table.appendChild(header);
 
-            const descRow = document.createElement("tr");
-            const descCell = document.createElement("td");
-            descCell.colSpan = 2;
-            descCell.textContent = _info.infotext;
-            descRow.appendChild(descCell);
-            table.appendChild(descRow);
+            if (_info.infotext) {
+                const descRow = document.createElement("tr");
+                const descCell = document.createElement("td");
+                descCell.colSpan = 2;
+                headerCell.textContent = _info.infotext;
+                descRow.appendChild(descCell);
+                table.appendChild(descRow);
+            }
 
             for (const [key, value] of Object.entries(_info.data || {})) {
                 const row = document.createElement("tr");
@@ -49,8 +52,6 @@ namespace SolarSystem {
             document.body.appendChild(table);
 
         }
-        //public assembleInfoText(): string {
-        //    return "placeholder";
-        //}
+
     }
 }
