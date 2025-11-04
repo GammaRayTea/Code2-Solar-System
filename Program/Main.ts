@@ -5,10 +5,9 @@ namespace SolarSystem {
     let timescale: number;
     const clickedPos: Vector2 = new Vector2(0, 0);
     let infobox: Infobox;
-    let clicked: boolean = false;
+    let clickedActive: boolean = false;
     let delaytimescale: number = 1;
- 
-
+    
     function handleLoad(_event: Event): void {
         let canvas: HTMLCanvasElement | null = document.getElementById("simulationcanvas") as HTMLCanvasElement;
         if (!canvas) {
@@ -25,9 +24,9 @@ namespace SolarSystem {
         let deltaTime = getDeltaTime();
         for (let actor of actors) {
             actor.process(delaytimescale);
-            if (clicked) {
+            if (clickedActive) {
                 if (actor.isclicked(clickedPos)) {
-                    createInfoBox(actor.info, clickedPos);
+                    Infobox.generate(actor.info, clickedPos);
                 }
             }
         }
@@ -35,7 +34,7 @@ namespace SolarSystem {
 
     function hndlclick(_event: MouseEvent): void {
         clickedPos.set(_event.clientX - crc2.canvas.offsetLeft, _event.clientY - crc2.canvas.offsetTop);
-        clicked = true;
+        clickedActive = true;
     }
 
 }
