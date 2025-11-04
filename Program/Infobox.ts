@@ -1,13 +1,13 @@
 namespace SolarSystem {
-    export interface ShipInfo { name: string, destination: string, origin: string};
-    export interface CelestialBodyInfo { name: string, infotext: string, orbiRotation: number, axisRotation: number, size:number};
+    export interface ShipInfo { name: string, destination: string, origin: string };
+    export interface CelestialBodyInfo { name: string, infotext: string, orbiRotation: number, axisRotation: number, size: number };
 
 
     export class Infobox {
-        public info?: Info;
+        public info?: CelestialBodyInfo | ShipInfo;
         public position?: Vector2;
 
-        public static generate(_info: Info, _position: Vector2): void {
+        public static generate(_info: CelestialBodyInfo | ShipInfo, _position: Vector2): void {
             const table = document.createElement("table");
             table.classList.add("info-popup");
 
@@ -17,7 +17,7 @@ namespace SolarSystem {
             if (_info.title) {
                 headerCell.textContent = _info.title;
             }
-            else{
+            else {
                 headerCell.textContent = "Unknown";
             }
             header.appendChild(headerCell);

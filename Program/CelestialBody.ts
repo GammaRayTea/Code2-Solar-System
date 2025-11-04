@@ -3,18 +3,15 @@ namespace SolarSystem {
         public size: number;
         public orbitRotation: number = 0;
         public axisRotation: number = 0;
-        public info: Info;
+        public info: CelestialBodyInfo;
         public path!: Path2D;
 
 
 
-        public constructor(_name: string, _size: number, _info: Info) {
+        public constructor(_name: string, _size: number, _info: CelestialBodyInfo) {
             super(_name,);
             this.size = _size;
             this.info = _info;
-            for (const dataPair of _info.data!) {
-                this.info.data!.push(dataPair)
-            }
             this.createPath(this.size);
         }
 
@@ -24,17 +21,17 @@ namespace SolarSystem {
         }
 
         private move(): void {
-            this.orbitRotation= 360/this.info.data!["orbitalPeriod"]
+            this.orbitRotation += 360 / this.orbitRotation;
+            this.axisRotation += 360 / this.axisRotation;
         }
-        
+
         public draw(): void {
             crc2.save();
             crc2.rotate(this.orbitRotation);
-            crc2.translate(0, this.positionalOffset.y);
+            crc2.translate(0, this.positionOffset);
             crc2.rotate(this.axisRotation | 0);
             crc2.stroke(this.path);
             crc2.restore();
-
         }
 
         public createPath(_planetSize: number): void {
