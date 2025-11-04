@@ -1,7 +1,6 @@
 namespace SolarSystem {
     export class Actor {
         public name: string;
-        public matrices: Matrix2[];
         public globalPosition: Vector2;
         public info: Info;
         public path: Path2D;
