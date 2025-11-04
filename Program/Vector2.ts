@@ -35,6 +35,9 @@ namespace SolarSystem {
             vector.scale(length);
             return vector
         }
+        public get angle():number{
+            return toDegree(Math.acos(this.x*0+ this.y*1));
+        }
         public get length(): number {
             return Math.sqrt(Math.pow(this.x, 2) + Math.pow(this.y, 2));
         }
