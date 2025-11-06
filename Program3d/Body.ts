@@ -4,15 +4,14 @@ namespace FirstFudge {
 
     export class Body extends ƒ.Node {
         rotSpeed: number;
-        public constructor(_name: string, _speed: number, _size: number) {
+        public constructor(_name: string, _speed: number, _size: number, _distance: number ) {
             super(_name);
             this.addComponent(new ƒ.ComponentMesh(mesh));
             this.addComponent(new ƒ.ComponentMaterial(material));
             this.addComponent(new ƒ.ComponentTransform());
             this.rotSpeed = _speed;
             this.getComponent(ƒ.ComponentMesh).mtxPivot.scale(new ƒ.Vector3(_size, _size, _size));
-
-            this.mtxLocal.translateX(0);
+            this.mtxLocal.translateX(_distance);
         }
 
         public update(): void {

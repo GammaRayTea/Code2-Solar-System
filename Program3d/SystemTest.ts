@@ -17,7 +17,27 @@ namespace FirstFudge {
 
   let moon: Body;
 
-  let simspeed: number = 500;
+  let phobos: Body;
+  let deimos: Body;
+
+  let ganymede: Body;
+  let callisto: Body;
+  let io: Body;
+
+  let titan: Body;
+  let rhea: Body;
+  let iaepetus: Body;
+
+  let titania: Body;
+  let oberon: Body;
+  let umbriel: Body;
+
+  let triton: Body;
+  let proteus: Body;
+
+
+
+  let simspeed: number = 40;
 
   let viewport: ƒ.Viewport;
 
@@ -28,39 +48,54 @@ namespace FirstFudge {
     mesh = new ƒ.MeshSphere("Sphere");
     material = new ƒ.Material("Material", ƒ.ShaderLit);
 
-    sun = new Body("Sun", 360/300,5);
+    sun = new Body("Sun", 360/300,10,0);
     
+    mercury = new Body("Mercury", (360/88)*simspeed, 4, 10);
+    
+    venus = new Body("Venus", (360/256)*simspeed, 3.8,20);
 
-    mercury = new Body("Mercury", (360/88)*simspeed, 1);
-    mercury.mtxLocal.translateX(5);
-
-    venus = new Body("Venus", (360/256)*simspeed, 1);
-    venus.mtxLocal.translateX(8);
-
-    earth = new Body("Earth", (360/356)*simspeed,2);
-    earth.mtxLocal.translateX(10);
-   
-    moon = new Body("Moon", (360/30)*simspeed,0.6);
+    earth = new Body("Earth", (360/356)*simspeed,5,35);
+    moon = new Body("Moon", (360/30)*simspeed,2,3);
     moon.mtxLocal.translateX(2);
     earth.addChild(moon);
     
-    mars = new Body("Mars", (360/687)*simspeed,1.7);
-    mars.mtxLocal.translateX(14);
-    //mars.getComponent(ƒ.ComponentTransform).mtxLocal.rotateY(60, true);
-    //mars.getComponent(ƒ.ComponentMesh).mtxPivot.rotateY(-3 * 60);
+    mars = new Body("Mars", (360/687)*simspeed,4,45);
 
-    jupiter = new Body("Jupiter",(360/4333)*simspeed,2);
-    jupiter.mtxLocal.translateX(18);
+    phobos = new Body("Phobos", -(360/30)*simspeed,2,4);
+    deimos = new Body("Deimos", (360/40)*simspeed,2,7);
+    mars.addChild(phobos);
+    mars.addChild(deimos);
+  
+    jupiter = new Body("Jupiter",(360/4333)*simspeed,6,55);
+    ganymede = new Body("Ganimede", (360/200)*simspeed,2,3);
+    callisto = new Body("Callisto", -(360/50)*simspeed,2,5);
+    io = new Body("Io", (360/10)*simspeed,2,7);
+    jupiter.addChild(ganymede);
+    jupiter.addChild(callisto);
+    jupiter.addChild(io);
 
-    saturn = new Body("Saturn",(360/10759)*simspeed,3);
-    saturn.mtxLocal.translateX(24);
+  
+    saturn = new Body("Saturn",(360/10759)*simspeed,3,65);
+    titan = new Body("Titan",(360/40)*simspeed,3,4);
+    rhea = new Body("Rhea",(360/50)*simspeed,2,3);
+    iaepetus = new Body("Iapetus",(360/69)*simspeed,2,6);
+    saturn.addChild(titan);
+    saturn.addChild(rhea);
+    saturn.addChild(iaepetus);
 
-    uranus = new Body("Uranus",(360/30687)*simspeed,3);
-    uranus.mtxLocal.translateX(27);
+    uranus = new Body("Uranus",(360/30687)*simspeed,5,70);
+    titania= new Body("Titania",(360/40)*simspeed,3,4);
+    oberon = new Body("Oberon",(360/100)*simspeed,2,6);
+    umbriel = new Body("Umbriel",(360/60)*simspeed,3,7);
+    uranus.addChild(titania);
+    uranus.addChild(oberon);
+    uranus.addChild(umbriel);
 
-    neptune = new Body("Neptune",(360/60190)*simspeed,4);
-    neptune.mtxLocal.translateX(33);
-
+    neptune = new Body("Neptune",(360/60190)*simspeed,5,80);
+    proteus = new Body("Proteus",(360/300)*simspeed,2,4);
+    triton = new Body("Triton",(360/10)*simspeed,1,6)
+    neptune.addChild(proteus);
+    neptune.addChild(triton);
 
     let system = new ƒ.Node("System");
     system.addChild(sun);
@@ -76,7 +111,7 @@ namespace FirstFudge {
     viewport = new ƒ.Viewport();
     viewport.initialize("Viewport", system, cmpCamera, canvas);
 
-    cmpCamera.mtxPivot.translateY(100);
+    cmpCamera.mtxPivot.translateY(200);
     //cmpCamera.mtxPivot.translateZ(-20);
     //cmpCamera.mtxPivot.rotateY(180);
     cmpCamera.mtxPivot.rotateX(90);
@@ -88,15 +123,37 @@ namespace FirstFudge {
 
   function update(): void {
     sun.update();
+
     mercury.update();
+
     venus.update();
+
     earth.update();
-    mars.update();
     moon.update();
+
+    mars.update();
+    phobos.update();
+    deimos.update();
+    
     jupiter.update();
+    ganymede.update();
+    callisto.update();
+    io.update();
+
     saturn.update();
+    titan.update();
+    rhea.update();
+    iaepetus.update();
+
     uranus.update();
+    titania.update();
+    oberon.update();
+    umbriel.update();
+
     neptune.update();
+    triton.update();
+    proteus.update();
+
     viewport.draw();
   }
 }
