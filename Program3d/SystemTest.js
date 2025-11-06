@@ -1,0 +1,78 @@
+"use strict";
+var FirstFudge;
+(function (FirstFudge) {
+    var ƒ = FudgeCore;
+    document.addEventListener("DOMContentLoaded", hndLoad);
+    let sun;
+    let mercury;
+    let venus;
+    let earth;
+    let mars;
+    let jupiter;
+    let saturn;
+    let uranus;
+    let neptune;
+    let moon;
+    let simspeed = 500;
+    let viewport;
+    function hndLoad() {
+        const canvas = document.querySelector("canvas");
+        const cmpCamera = new ƒ.ComponentCamera();
+        FirstFudge.mesh = new ƒ.MeshSphere("Sphere");
+        FirstFudge.material = new ƒ.Material("Material", ƒ.ShaderLit);
+        sun = new FirstFudge.Body("Sun", 360 / 300, 5);
+        mercury = new FirstFudge.Body("Mercury", (360 / 88) * simspeed, 1);
+        mercury.mtxLocal.translateX(5);
+        venus = new FirstFudge.Body("Venus", (360 / 256) * simspeed, 1);
+        venus.mtxLocal.translateX(8);
+        earth = new FirstFudge.Body("Earth", (360 / 356) * simspeed, 2);
+        earth.mtxLocal.translateX(10);
+        moon = new FirstFudge.Body("Moon", (360 / 30) * simspeed, 0.6);
+        moon.mtxLocal.translateX(2);
+        earth.addChild(moon);
+        mars = new FirstFudge.Body("Mars", (360 / 687) * simspeed, 1.7);
+        mars.mtxLocal.translateX(14);
+        //mars.getComponent(ƒ.ComponentTransform).mtxLocal.rotateY(60, true);
+        //mars.getComponent(ƒ.ComponentMesh).mtxPivot.rotateY(-3 * 60);
+        jupiter = new FirstFudge.Body("Jupiter", (360 / 4333) * simspeed, 2);
+        jupiter.mtxLocal.translateX(18);
+        saturn = new FirstFudge.Body("Saturn", (360 / 10759) * simspeed, 3);
+        saturn.mtxLocal.translateX(24);
+        uranus = new FirstFudge.Body("Uranus", (360 / 30687) * simspeed, 3);
+        uranus.mtxLocal.translateX(27);
+        neptune = new FirstFudge.Body("Neptune", (360 / 60190) * simspeed, 4);
+        neptune.mtxLocal.translateX(33);
+        let system = new ƒ.Node("System");
+        system.addChild(sun);
+        system.addChild(mercury);
+        system.addChild(venus);
+        system.addChild(earth);
+        system.addChild(mars);
+        system.addChild(jupiter);
+        system.addChild(saturn);
+        system.addChild(uranus);
+        system.addChild(neptune);
+        viewport = new ƒ.Viewport();
+        viewport.initialize("Viewport", system, cmpCamera, canvas);
+        cmpCamera.mtxPivot.translateY(100);
+        //cmpCamera.mtxPivot.translateZ(-20);
+        //cmpCamera.mtxPivot.rotateY(180);
+        cmpCamera.mtxPivot.rotateX(90);
+        ƒ.Loop.start();
+        ƒ.Loop.addEventListener("loopFrame" /* ƒ.EVENT.LOOP_FRAME */, update);
+    }
+    function update() {
+        sun.update();
+        mercury.update();
+        venus.update();
+        earth.update();
+        mars.update();
+        moon.update();
+        jupiter.update();
+        saturn.update();
+        uranus.update();
+        neptune.update();
+        viewport.draw();
+    }
+})(FirstFudge || (FirstFudge = {}));
+//# sourceMappingURL=SystemTest.js.map

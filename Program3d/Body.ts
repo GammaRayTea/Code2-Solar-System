@@ -1,22 +1,26 @@
 namespace FirstFudge {
-  import ƒ = FudgeCore;
+    import ƒ = FudgeCore;
 
-  export class Body extends ƒ.Node {
-    public constructor(_name: string) {
-      super(_name);
-      this.addComponent(new ƒ.ComponentMesh(mesh));
-      this.addComponent(new ƒ.ComponentMaterial(material));
-      this.addComponent(new ƒ.ComponentTransform());
 
-      this.mtxLocal.translateX(1);
+    export class Body extends ƒ.Node {
+        rotSpeed: number;
+        public constructor(_name: string, _speed: number, _size: number) {
+            super(_name);
+            this.addComponent(new ƒ.ComponentMesh(mesh));
+            this.addComponent(new ƒ.ComponentMaterial(material));
+            this.addComponent(new ƒ.ComponentTransform());
+            this.rotSpeed = _speed;
+            this.getComponent(ƒ.ComponentMesh).mtxPivot.scale(new ƒ.Vector3(_size, _size, _size));
+
+            this.mtxLocal.translateX(0);
+        }
+
+        public update(): void {
+
+            const angle: number = this.rotSpeed * ƒ.Loop.timeFrameGame / 1000;
+
+            this.getComponent(ƒ.ComponentTransform).mtxLocal.rotateY(angle, true);
+            this.getComponent(ƒ.ComponentMesh).mtxPivot.rotateY(-3 * angle);
+        }
     }
-
-    public update(): void {
-      const rotSpeed: number = 360 / 5;
-      const angle: number = rotSpeed * ƒ.Loop.timeFrameGame / 1000;
-
-      this.getComponent(ƒ.ComponentTransform).mtxLocal.rotateY(angle, true);
-      this.getComponent(ƒ.ComponentMesh).mtxPivot.rotateY(-3 * angle);
-    }
-  }
 }
